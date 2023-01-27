@@ -1,9 +1,8 @@
 import { ScrollView, StyleSheet } from "react-native";
-
-import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import SinglePin from "../components/SinglePin";
+import pins from "../assets/data/pins";
 
 export default function HomeScreen({
   navigation,
@@ -11,20 +10,23 @@ export default function HomeScreen({
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <SinglePin
-          pin={{
-            title: "Title",
-            image:
-              "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/pinterest/6.jpeg",
-          }}
-        />
-        {/* <SinglePin
-          pin={{
-            title: "Title 02",
-            image:
-              "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/pinterest/5.jpeg",
-          }}
-        /> */}
+        {/* PINS ARE ARRANGED IN TWO COLUMNS ON THE SCREEN IN ORDER TO ACHIEVE A DYNAMIC DISPLAY */}
+
+        <View style={styles.pinsColumn}>
+          {pins
+            .filter((item, idx) => idx % 2 === 0)
+            .map((x) => (
+              <SinglePin pin={x} key={x.id} />
+            ))}
+        </View>
+
+        <View style={styles.pinsColumn}>
+          {pins
+            .filter((item, idx) => idx % 2 === 1)
+            .map((x) => (
+              <SinglePin pin={x} key={x.id} />
+            ))}
+        </View>
       </View>
     </ScrollView>
   );
@@ -32,9 +34,10 @@ export default function HomeScreen({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     padding: 10,
+    flexDirection: "row",
+  },
+  pinsColumn: {
+    flex: 1,
   },
 });

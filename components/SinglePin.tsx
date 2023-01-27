@@ -11,14 +11,16 @@ const SinglePin = (props: any) => {
   }, [image]);
 
   return (
-    <View style={styles.pin}>
+    <View style={styles.pinContainer}>
       <Image
         source={{
           uri: image,
         }}
         style={[styles.image, { aspectRatio: aspectRatio }]}
       />
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title} numberOfLines={2}>
+        {title}
+      </Text>
     </View>
   );
 };
@@ -30,12 +32,14 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 25,
   },
-  pin: {
+  pinContainer: {
     width: "100%",
+    padding: 4,
   },
   title: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
-    margin: 10,
+    margin: 5,
+    color: "black",
   },
 });
