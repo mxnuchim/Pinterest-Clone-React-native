@@ -85,21 +85,30 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarShowLabel: false,
       }}
     >
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
+        options={() => ({
           title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Add"
+        component={TabOneScreen}
+        options={() => ({
+          title: "Add",
+          tabBarIcon: ({ color }) => <TabBarIcon name="plus" color={color} />,
+        })}
+      />
+      <BottomTab.Screen
+        name="Profile"
         component={TabTwoScreen}
         options={{
           title: "Profile",
@@ -117,5 +126,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={25} style={{ marginBottom: -3 }} {...props} />;
 }
