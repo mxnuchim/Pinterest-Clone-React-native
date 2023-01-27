@@ -62,8 +62,8 @@ export default [
   {
     id: "10",
     image:
-      "https://i.pinimg.com/474x/1a/d1/3a/1ad13aeebba2011af66cf6b66a36ef5f.jpg",
-    title: "",
+      "https://i.pinimg.com/474x/cc/22/0d/cc220d5d8d3399bff25461263e614f98.jpg",
+    title: "Signature decor",
   },
   {
     id: "11",
@@ -104,8 +104,8 @@ export default [
   {
     id: "17",
     image:
-      "https://i.pinimg.com/474x/95/5e/10/955e10d244b7ac3db969cf20c2164aba.jpg",
-    title: "Widebody LC500",
+      "https://i.pinimg.com/564x/f8/b6/00/f8b600076b442fbf67eec5caeb73b9aa.jpg",
+    title: "LOCALIC",
   },
   {
     id: "18",

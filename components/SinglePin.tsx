@@ -1,17 +1,23 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const SinglePin = (props: any) => {
-  const { image, title } = props.pin;
+  const { id, image, title } = props.pin;
+  const navigation = useNavigation();
 
-  const [aspectRatio, setAspectRatio] = useState(1 / 2);
+  const [aspectRatio, setAspectRatio] = useState(1);
 
   useEffect(() => {
     Image.getSize(image, (width, height) => setAspectRatio(width / height));
   }, [image]);
 
+  const toPinScreen = () => {
+    navigation.navigate("Pin", { id });
+  };
+
   return (
-    <View style={styles.pinContainer}>
+    <Pressable onPress={toPinScreen} style={styles.pinContainer}>
       <Image
         source={{
           uri: image,
@@ -21,7 +27,7 @@ const SinglePin = (props: any) => {
       <Text style={styles.title} numberOfLines={2}>
         {title}
       </Text>
-    </View>
+    </Pressable>
   );
 };
 
