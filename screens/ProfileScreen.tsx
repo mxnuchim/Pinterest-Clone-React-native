@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: "row",
     alignSelf: "flex-end",
-    padding: 8,
   },
   icon: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 7,
+    right: 6,
   },
   title: {
     fontSize: 20,
