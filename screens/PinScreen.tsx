@@ -33,6 +33,15 @@ const PinScreen = () => {
     );
   }, [pin]);
 
+  function generateRandom(maxLimit = 100) {
+    let rand = Math.random() * maxLimit;
+
+    rand = Math.floor(rand); // 99
+    console.log(rand); // say 99.81321410836433
+
+    return rand;
+  }
+
   return (
     <SafeAreaView style={{ backgroundColor: "black" }}>
       <StatusBar style="light" />
@@ -51,7 +60,7 @@ const PinScreen = () => {
 
         <View style={styles.moreLikeThis}>
           <Text style={styles.title}>More Like This</Text>
-          <PinsList pins={pins.slice(13, 22)} />
+          <PinsList pins={pins.slice(generateRandom(5), generateRandom(23))} />
         </View>
       </ScrollView>
     </SafeAreaView>
