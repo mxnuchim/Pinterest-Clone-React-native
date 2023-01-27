@@ -1,4 +1,11 @@
-import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import React, { useState } from "react";
 
@@ -23,17 +30,23 @@ const CreatePin = () => {
 
   return (
     <View style={styles.root}>
-      <Button title="Upload your Pin" onPress={pickImage} />
+      <TouchableOpacity style={styles.btn} onPress={pickImage}>
+        <Text style={styles.btnText}>
+          {imageUri ? "Choose another pin" : "Upload your Pin"}
+        </Text>
+      </TouchableOpacity>
       {imageUri && (
         <>
           <Image source={{ uri: imageUri }} style={styles.image} />
           <TextInput
             placeholder="Title..."
-            value={"title"}
             onChangeText={() => {}}
             style={styles.input}
+            placeholderTextColor={"gray"}
           />
-          <Button title="Submit Pin" onPress={() => {}} />
+          <TouchableOpacity style={styles.btn} onPress={() => {}}>
+            <Text style={styles.btnText}>Submit this Pin</Text>
+          </TouchableOpacity>
         </>
       )}
     </View>
@@ -52,13 +65,27 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     aspectRatio: 1,
-    marginVertical: 10,
+    marginVertical: 15,
+    borderRadius: 25,
   },
   input: {
     borderWidth: 1,
-    borderColor: "gainsboro",
-    padding: 5,
+    borderColor: "gray",
+    padding: 10,
     width: "100%",
     borderRadius: 5,
+    height: 45,
+    marginVertical: 15,
+  },
+  btn: {
+    backgroundColor: "black",
+    padding: 17,
+    borderRadius: 8,
+  },
+  btnText: {
+    fontSize: 16,
+    fontWeight: "600",
+    lineHeight: 17,
+    color: "white",
   },
 });
