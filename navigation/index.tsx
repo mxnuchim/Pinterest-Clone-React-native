@@ -12,7 +12,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { Alert, ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -27,6 +27,7 @@ import {
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import PinScreen from "../screens/PinScreen";
+import CreatePin from "../screens/CreatePin";
 
 export default function Navigation({
   colorScheme,
@@ -96,15 +97,25 @@ function BottomTabNavigator() {
         component={TabOneScreen}
         options={() => ({
           title: "Home",
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon
+              name="home"
+              color={colorScheme === "dark" ? "white" : "black"}
+            />
+          ),
         })}
       />
       <BottomTab.Screen
-        name="Add"
-        component={TabOneScreen}
+        name="Create"
+        component={CreatePin}
         options={() => ({
-          title: "Add",
-          tabBarIcon: ({ color }) => <TabBarIcon name="plus" color={color} />,
+          title: "Create",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon
+              name="plus"
+              color={colorScheme === "dark" ? "white" : "black"}
+            />
+          ),
         })}
       />
       <BottomTab.Screen
@@ -112,7 +123,12 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: "Profile",
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon
+              name="user"
+              color={colorScheme === "dark" ? "white" : "black"}
+            />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -124,7 +140,10 @@ function BottomTabNavigator() {
  */
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
+  color?: string;
+  onPress?: () => void;
 }) {
-  return <FontAwesome size={25} style={{ marginBottom: -3 }} {...props} />;
+  return (
+    <FontAwesome size={25} style={{ marginBottom: -3 }} color={""} {...props} />
+  );
 }

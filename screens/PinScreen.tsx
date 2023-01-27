@@ -1,11 +1,18 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import pins from "../assets/data/pins";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { PinsListInterface } from "../components/PinsList";
+import PinsList, { PinsListInterface } from "../components/PinsList";
 
 const PinScreen = () => {
   const navigation = useNavigation();
@@ -29,7 +36,7 @@ const PinScreen = () => {
   return (
     <SafeAreaView style={{ backgroundColor: "black" }}>
       <StatusBar style="light" />
-      <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <Pressable
           style={[styles.backButton]}
           onPress={() => navigation.goBack()}
@@ -41,7 +48,12 @@ const PinScreen = () => {
           style={[styles.img, { aspectRatio: aspectRatio }]}
         />
         <Text style={styles.title}>{pin?.title}</Text>
-      </View>
+
+        <View style={styles.moreLikeThis}>
+          <Text style={styles.title}>More Like This</Text>
+          <PinsList pins={pins.slice(13, 22)} />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -73,4 +85,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
   },
+  moreLikeThis: {},
 });
