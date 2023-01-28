@@ -33,7 +33,7 @@ const PinScreen = () => {
     );
   }, [pin]);
 
-  function generateRandom(maxLimit = 100) {
+  function generateRandom(maxLimit = 23) {
     let rand = Math.random() * maxLimit;
 
     rand = Math.floor(rand); // 99
