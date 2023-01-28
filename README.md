@@ -18,6 +18,7 @@ This project was developed with the following technologies:
 - TypeScript
 - Expo
 - And a lot of initiative. Getting that Pinterest style mansonry layout was very interesting
+- You can watch the progress of the entire build on twitter <a href="https://twitter.com/manuchim_ix/status/1619248160181817344?s=20&t=-qz8FT4YLqTH2CYxzxbIwQ">Here</a>
 
 ## 📝 Getting started
 
