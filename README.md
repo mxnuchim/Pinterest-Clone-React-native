@@ -39,8 +39,4 @@ After finishing the installation, run:
 expo start
 ```
 
-To view the project you can open [index.html](index.html) into your browser.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+<h2>And you should be good to go</h2>
